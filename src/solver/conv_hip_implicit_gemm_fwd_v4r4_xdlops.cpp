@@ -958,6 +958,8 @@ ConvSolution ConvHipImplicitGemmForwardV4R4Xdlops::GetSolution(
         ctx.general_compile_options;
     // clang-format on
 
+    construction_parameters.comp_options += " -mllvm -amdgpu-enable-global-sgpr-addr";
+
     result.invoker_factory = conv::MakeImplGemmDataInvokerFactory(ctx);
     result.construction_params.push_back(construction_parameters);
     return result;

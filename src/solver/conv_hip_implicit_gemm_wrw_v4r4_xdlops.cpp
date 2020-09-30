@@ -935,6 +935,7 @@ ConvSolution ConvHipImplicitGemmWrwV4R4Xdlops::GetSolution(
         std::string(" -DCK_USE_AMD_BUFFER_ATOMIC_ADD=") + (is_support_amd_buffer_atomic_add(ctx) ? '1' : '0') +
         ctx.general_compile_options;
     // clang-format on
+    construction_parameters.comp_options += " -mllvm -amdgpu-enable-global-sgpr-addr";
 
     result.construction_params.push_back(construction_parameters);
 
